@@ -10,3 +10,7 @@ This software has only been tested on Ubuntu Linux 14.04, but should at least wo
 
 To run it just execute get_cone.sh, this calls generate_cone.py with the current latitude and longitude from GPSD. It will ask you for the
 angle of the latest run. It will then create a new KML file called coneXXX.kml where XXX is an incrementing number. 
+
+![example]
+
+[example]: https://github.com/colinsauze/FoxHuntAssistant/raw/master/foxhunt.png "Example output"
