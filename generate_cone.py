@@ -49,10 +49,10 @@ def project_point(bearing,dist,lat1,lon1):
 
 #get the angle
 try:
-    print "Enter angle"
-    angle=int(raw_input())
+    print("Enter angle")
+    angle=int(input())
 except ValueError:
-    print "Not a number"
+    print("Not a number")
 
 angle_min = angle-15
 if angle_min<0:
@@ -80,13 +80,13 @@ for filename in filelist:
     filenum=filenum.replace(".kml","")
 
     try:
-	if int(filenum) > maxnum:
-	    maxnum = int(filenum)
+        if int(filenum) > maxnum:
+            maxnum = int(filenum)
     except ValueError:
-	print "non-integer name %s" % (filename)
-        
+        print("non-integer name %s" % (filename))
+
 filename=("cone%03d.kml") % (maxnum+1)
-print filename
+print(filename)
 
 outfile = open(filename,"w")
 
@@ -98,9 +98,9 @@ outfile.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?> \
 
 
 outfile.write( "    <Placemark><name>Untitled Polygon</name> \
-	<Polygon> <tessellate>1</tessellate> <outerBoundaryIs><LinearRing> <coordinates> \
-			%f,%f,0 %f,%f,0 %f,%f,0 %f,%f,0  \
-		    </coordinates> </LinearRing> </outerBoundaryIs> </Polygon> </Placemark>" % (lon,lat,point1[1],point1[0],point2[1],point2[0],lon,lat))
+    <Polygon> <tessellate>1</tessellate> <outerBoundaryIs><LinearRing> <coordinates> \
+            %f,%f,0 %f,%f,0 %f,%f,0 %f,%f,0  \
+            </coordinates> </LinearRing> </outerBoundaryIs> </Polygon> </Placemark>" % (lon,lat,point1[1],point1[0],point2[1],point2[0],lon,lat))
 
 outfile.write("</Document></kml>")
 
