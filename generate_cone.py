@@ -24,7 +24,7 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #SOFTWARE.
 
-import math, glob, sys, os, time
+import math, glob, sys, os, time, datetime
 
 #returns the coordinates of a point a given distance and bearing from an origin point
 def project_point(bearing,dist,lat1,lon1):
@@ -107,7 +107,9 @@ outfile.write("</Document></kml>")
 outfile.close()
 
 logfile = open("logfile","a")
-timestamp = time.time()
-logfile.write("%s,%f,%f,%d\n" % (timestamp,lat,lon,angle))
+timestamp = int(time.time())
+datestr = datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d')
+timestr = datetime.datetime.fromtimestamp(timestamp).strftime('%H:%M')
+logfile.write("%s,%s,%f,%f,%d\n" % (datestr,timestr,lat,lon,angle))
 logfile.close()
 
