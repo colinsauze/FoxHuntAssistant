@@ -1,6 +1,6 @@
 # FoxHuntAssistant
 An application to assist with amateur radio inverse "fox hunts". 
-This is where you find a remote station by calling them on radio and having them tell you a bearing using direction finding equipment. 
+This is where you find a remote station by calling them on the radio and having them tell you a bearing using direction finding equipment. 
 
 This program takes your current location from GPSD and asks for the bearing to the remote station. It then uses KML to generate a 
 triangular shape starting from your current location and heading in the direction of the remote station. Where these triangles overlap 
