@@ -23,24 +23,25 @@ def calculate_angle(lat1, lon1, lat2, lon2):
 
     return heading
 
-data_dir = "data/2016"
+print("\"Date\",\"Time\",\"Lat\",\"Lon\",\"FoxLat\",\"FoxLon\",\"Measured Angle\",\"Actual Angle\",\"Error\"")
 
-fox_location = open(data_dir + "/fox_location","r")
 
-fox_loc_str = fox_location.read()
+for data_dir in ["data/2016", "data/2017", "data/2018", "data/2019"]:
 
-fox_lat = float(fox_loc_str.split(",")[0])
-fox_lon = float(fox_loc_str.split(",")[1])
+    fox_location = open(data_dir + "/fox_location","r")
 
-fox_location.close()
+    fox_loc_str = fox_location.read()
 
-print("The fox was located at ",fox_lat,fox_lon)
+    fox_lat = float(fox_loc_str.split(",")[0])
+    fox_lon = float(fox_loc_str.split(",")[1])
 
-data = pandas.read_csv(data_dir + "/logfile")
+    fox_location.close()
 
-for idx, row in data.iterrows():
-    true_angle = calculate_angle(row['lat'], row['lon'], fox_lat, fox_lon)
-    angle_diff = get_angle_diff(true_angle, row['angle'])
-    print("Point %d (%f,%f): True angle is %d, measured angle was %d, error %d" % (idx,row['lat'],row['lon'],true_angle,row['angle'],angle_diff))
+    data = pandas.read_csv(data_dir + "/logfile")
+
+    for idx, row in data.iterrows():
+        true_angle = calculate_angle(row['lat'], row['lon'], fox_lat, fox_lon)
+        angle_diff = get_angle_diff(true_angle, row['angle'])
+        print("%s,%s,%f,%f,%f,%f,%d,%d,%d" % (row['date'],row['time'],row['lat'],row['lon'],fox_lat,fox_lon,true_angle,row['angle'],angle_diff))
 
 
