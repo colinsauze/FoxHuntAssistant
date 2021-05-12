@@ -92,17 +92,25 @@ outfile = open(filename,"w")
 
 #write some KML
 
-outfile.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?> \
-<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\"> \
-<Document>")
+outfile.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n \
+<kml xmlns=\"http://www.opengis.net/kml/2.2\" xmlns:gx=\"http://www.google.com/kml/ext/2.2\" xmlns:kml=\"http://www.opengis.net/kml/2.2\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n \
+\t<Document>\n")
 
 
-outfile.write( "    <Placemark><name>Untitled Polygon</name> \
-    <Polygon> <tessellate>1</tessellate> <outerBoundaryIs><LinearRing> <coordinates> \
-            %f,%f,0 %f,%f,0 %f,%f,0 %f,%f,0  \
-            </coordinates> </LinearRing> </outerBoundaryIs> </Polygon> </Placemark>" % (lon,lat,point1[1],point1[0],point2[1],point2[0],lon,lat))
+outfile.write( "\t<Placemark><name>Untitled Polygon</name>\n \
+\t\t<Polygon>\t\t\t<tessellate>1</tessellate>\n \
+\t\t\t<outerBoundaryIs>\n \
+\t\t\t\t<LinearRing><coordinates>%f,%f,0 %f,%f,0 %f,%f,0 %f,%f,0</coordinates>\n \
+\t\t\t\t</LinearRing>\n \
+\t\t\t</outerBoundaryIs>\n \
+\t\t\t<innerBoundaryIs>\t\t\t\t\n \
+\t\t\t\t<LinearRing><coordinates>%f,%f,0 %f,%f,0 %f,%f,0 %f,%f,0</coordinates>\n \
+\t\t\t\t</LinearRing>\n \
+\t\t\t</innerBoundaryIs>\n \
+\t\t</Polygon>\n \
+\t</Placemark>" % (lon,lat,point1[1],point1[0],point2[1],point2[0],lon,lat,lon,lat,point1[1],point1[0],point2[1],point2[0],lon,lat))
 
-outfile.write("</Document></kml>")
+outfile.write("\t</Document>\n</kml>\n")
 
 outfile.close()
 
