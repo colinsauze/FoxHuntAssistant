@@ -23,10 +23,10 @@ def calculate_angle(lat1, lon1, lat2, lon2):
 
     return heading
 
-print("\"Date\",\"Time\",\"Lat\",\"Lon\",\"FoxLat\",\"FoxLon\",\"Measured Angle\",\"Actual Angle\",\"Error\"")
+print("\"Date\",\"Time\",\"Lat\",\"Lon\",\"FoxLat\",\"FoxLon\",\"Calculated Angle\",\"Reported Angle\",\"Error\"")
 
 
-for data_dir in ["data/2016", "data/2017", "data/2018", "data/2019"]:
+for data_dir in ["data/2016", "data/2017", "data/2018", "data/2019", "data/2021"]:
 
     fox_location = open(data_dir + "/fox_location","r")
 
